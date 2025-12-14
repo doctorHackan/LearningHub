@@ -7,10 +7,26 @@ import javax.servlet.http.*;
 import com.cms.dao.CourseDAO;
 import com.cms.model.Course;
 
+
+/**
+ * Controller Servlet for Administrator operations.
+ * This servlet handles requests related to course management, such as adding new courses
+ * and assigning teachers to them.
+ */
 @WebServlet("/AdminController")
 public class AdminServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    
+    /**
+     * Handles HTTP POST requests coming from the Admin Dashboard.
+     * Processes form submissions to add new courses to the database.
+     *
+     * @param request  The HttpServletRequest object containing form data (action, courseName, teacherId).
+     * @param response The HttpServletResponse object used to redirect the user after processing.
+     * @throws ServletException If a servlet-specific error occurs.
+     * @throws IOException      If an I/O error occurs.
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
 

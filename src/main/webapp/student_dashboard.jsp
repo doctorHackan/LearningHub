@@ -73,7 +73,7 @@
                 <i class="fas fa-graduation-cap mr-2"></i>LearningHub
             </a>
             <div class="ml-auto">
-                <a href="login.jsp" class="btn btn-outline-light btn-sm rounded-pill px-3">
+                <a href="LogoutController" class="btn btn-outline-light btn-sm rounded-pill px-3">
                     <i class="fas fa-sign-out-alt mr-1"></i> Logout
                 </a>
             </div>
@@ -96,7 +96,7 @@
         <div class="row align-items-center mb-4">
             <div class="col-md-8">
                 <h2 class="text-dark">Hello, <b><%= user.getUsername() %></b>! 👋</h2>
-                <p class="text-muted">Welcome to your student dashboard. Check your schedule below.</p>
+                <p class="text-muted">Welcome to your student dashboard. Check your courses below.</p>
             </div>
             <div class="col-md-4">
                 <div class="card stat-card p-3">
@@ -167,7 +167,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-header">
-                        <h5 class="m-0 text-dark"><i class="fas fa-calendar-check mr-2 text-success"></i>My Schedule</h5>
+                        <h5 class="m-0 text-dark"><i class="fas fa-calendar-check mr-2 text-success"></i>My Courses</h5>
                     </div>
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush">

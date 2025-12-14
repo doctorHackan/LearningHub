@@ -4,10 +4,19 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import com.cms.model.User;
-//import com.sun.tools.javac.util.List;
 import java.util.List;
 
+
+/**
+ * Data Access Object for User-related database operations.
+ * Handles authentication and retrieval of teacher lists.
+ */
 public class UserDAO {
+	/**
+     * Retrieves a list of all users with the role 'teacher'.
+     * Used by Admin to assign teachers to courses.
+     * @return List of User objects.
+     */
 	public List<User> getAllTeachers() {
 	    List<User> teachers = new ArrayList<>();
 	    String sql = "SELECT * FROM users WHERE role = 'teacher'";
@@ -27,6 +36,13 @@ public class UserDAO {
 	    }
 	    return teachers;
 	}
+	
+	/**
+     * Authenticates a user against the database.
+     * @param username The input username.
+     * @param password The input password.
+     * @return User object if credentials match, null otherwise.
+     */
     public User checkLogin(String username, String password) {
         User user = null;
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";

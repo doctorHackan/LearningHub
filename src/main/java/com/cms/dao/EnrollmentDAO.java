@@ -6,9 +6,18 @@ import java.util.List;
 import com.cms.model.Course;
 import com.cms.model.User;
 
+
+/**
+ * Handles database operations for Course Enrollments.
+ * Manages the relationship between Students and Courses.
+ */
 public class EnrollmentDAO {
 	
-	// R-5: View registered students for a particular course
+	/**
+     * Fetches the list of students enrolled in a specific course
+     * @param courseId The ID of the course.
+     * @return List of User objects (Students).
+     */
 	public List<User> getEnrolledStudents(int courseId) {
 	    List<User> students = new ArrayList<>();
 	    String sql = "SELECT u.id, u.username FROM enrollments e " +
@@ -33,7 +42,13 @@ public class EnrollmentDAO {
 	    return students;
 	}
 
-    // R-4: Register for a new course
+    
+	/**
+     * Enrolls a student in a specific course.
+     * @param studentId The ID of the student.
+     * @param courseId The ID of the course.
+     * @return true if enrollment was successful.
+     */
 	public boolean enrollStudent(int studentId, int courseId) {
 	    // Query 1: Check if the enrollment exists
 	    String checkSql = "SELECT 1 FROM enrollments WHERE student_id = ? AND course_id = ?";
@@ -73,7 +88,11 @@ public class EnrollmentDAO {
 	    }
 	}
 
-    // R-4: View registered courses
+	/**
+     * Fetches the list of courses enrolled by a specific student.
+     * @param studentId The ID of the student.
+     * @return List of Course objects.
+     */
     public List<Course> getStudentCourses(int studentId) {
         List<Course> courses = new ArrayList<>();
         // Join enrollments -> courses -> users (to get teacher name)

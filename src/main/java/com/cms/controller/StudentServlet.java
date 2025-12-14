@@ -7,10 +7,25 @@ import javax.servlet.http.*;
 import com.cms.dao.EnrollmentDAO;
 import com.cms.model.User;
 
+/**
+ * Controller Servlet for Student operations.
+ * This servlet handles the business logic for students, specifically the ability
+ * to register for new courses.
+ */
 @WebServlet("/StudentController")
 public class StudentServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+    
+    /**
+     * Handles HTTP POST requests from the Student Dashboard.
+     * Manages the course enrollment process by linking the logged-in student
+     * to a selected course in the database.
+     *
+     * @param request  The HttpServletRequest object containing the "action" and "courseId".
+     * @param response The HttpServletResponse object used to redirect the user after processing.
+     * @throws ServletException If a servlet-specific error occurs.
+     * @throws IOException      If an I/O error occurs.
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
 
@@ -31,7 +46,7 @@ public class StudentServlet extends HttpServlet {
                 if (success) {
                     response.sendRedirect("student_dashboard.jsp?msg=Enrolled Successfully");
                 } else {
-                    response.sendRedirect("student_dashboard.jsp?error=Enrollment Failed");
+                    response.sendRedirect("student_dashboard.jsp?error=Already Enrolled");
                 }
             } else {
                 response.sendRedirect("login.jsp");
