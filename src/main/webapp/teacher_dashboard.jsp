@@ -97,7 +97,7 @@
         <div class="row align-items-center mb-4">
             <div class="col-md-12">
                 <h2 class="text-dark">Welcome back, <b><%= user.getUsername() %></b></h2>
-                <p class="text-muted">Manage your courses and view student rosters below.</p>
+                <p class="text-muted">Manage your courses and view enrolled students below.</p>
             </div>
         </div>
 
@@ -138,8 +138,16 @@
                 <div class="card h-100">
                     <div class="card-header bg-white border-bottom-0 pt-4">
                         <h5 class="text-dark m-0">
-                            <% if(selectedCourseId != null) { %>
-                                <i class="fas fa-users mr-2 text-success"></i>Enrolled Students
+                            <% if(selectedCourseId != null) { 
+                            	int cId = Integer.parseInt(selectedCourseId);
+                                EnrollmentDAO enrollDAO = new EnrollmentDAO();
+                                List<User> students = enrollDAO.getEnrolledStudents(cId);
+                            %>
+                                <i class="fas fa-users mr-2 text-success"></i>
+								    Enrolled Students
+								    <span class="badge badge-primary ml-2">
+								        <%= students.size() %>
+								    </span>
                             <% } else { %>
                                 <i class="fas fa-info-circle mr-2 text-info"></i>Course Details
                             <% } %>
@@ -197,7 +205,7 @@
                             <div class="text-center py-5">
                                 <img src="https://via.placeholder.com/150?text=Select+Course" alt="Select" class="img-fluid mb-3 d-none"> <i class="fas fa-chalkboard fa-4x text-primary opacity-25 mb-3"></i>
                                 <h4 class="text-muted font-weight-normal">Ready to teach?</h4>
-                                <p class="text-muted">Please select a course from the left menu to view the student roster.</p>
+                                <p class="text-muted">Please select a course from the left menu to view the enrolled students.</p>
                             </div>
                         <% } %>
                     </div>
