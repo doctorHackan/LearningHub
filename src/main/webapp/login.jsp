@@ -44,6 +44,11 @@
                     <i class="fas fa-exclamation-circle"></i> <%= request.getAttribute("message") %>
                 </div>
             <% } %>
+            <% if(request.getParameter("msg") != null) { %> 
+	            <div class="alert alert-success shadow-sm rounded-lg border-0 mb-4">
+	                <i class="fas fa-check-circle mr-2"></i> <%= request.getParameter("msg") %>
+	            </div> 
+        	<% } %>
 
             <form action="login" method="post">
                 <div class="form-group text-left">

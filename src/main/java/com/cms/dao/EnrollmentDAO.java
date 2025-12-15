@@ -120,4 +120,37 @@ public class EnrollmentDAO {
         }
         return courses;
     }
+    
+    public List<Course> getOtherCourses(int studentId) {
+        List<Course> courses = new ArrayList<>();
+        // Join enrollments -> courses -> users (to get teacher name)
+        String sql =
+        	    "SELECT c.id, c.course_name, u.username AS teacher_name " +
+        	    "FROM courses c " +
+        	    "JOIN users u ON c.teacher_id = u.id " +
+        	    "WHERE NOT EXISTS ( " +
+        	    "    SELECT 1 FROM enrollments e " +
+        	    "    WHERE e.course_id = c.id " +
+        	    "      AND e.student_id = ? " +
+        	    ")";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, studentId);
+            ResultSet rs = pstmt.executeQuery();
+
+            while(rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseName(rs.getString("course_name"));
+                c.setTeacherName(rs.getString("teacher_name"));
+                courses.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return courses;
+    }
+    
 }

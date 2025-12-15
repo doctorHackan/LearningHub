@@ -77,7 +77,7 @@
                 <i class="fas fa-chalkboard-teacher mr-2"></i>LearningHub <span class="small opacity-75">| Instructor</span>
             </a>
             <div class="ml-auto">
-                <a href="login.jsp" class="btn btn-outline-light btn-sm rounded-pill px-3">
+                <a href="LogoutController" class="btn btn-outline-light btn-sm rounded-pill px-3">
                     <i class="fas fa-sign-out-alt mr-1"></i> Logout
                 </a>
             </div>

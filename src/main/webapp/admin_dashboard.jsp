@@ -75,7 +75,7 @@
                 <i class="fas fa-user-shield mr-2"></i>LearningHub <span class="small opacity-75">| Admin Console</span>
             </span>
             <div class="ml-auto">
-                <a href="login.jsp" class="btn btn-outline-light btn-sm rounded-pill px-3">
+                <a href="LogoutController" class="btn btn-outline-light btn-sm rounded-pill px-3">
                     <i class="fas fa-sign-out-alt mr-1"></i> Logout
                 </a>
             </div>
@@ -176,7 +176,7 @@
                 <div class="card shadow-lg mb-5">
                     <div class="card-header bg-white pt-4 pb-0 border-bottom-0">
                         <h4 class="text-dark font-weight-bold"><i class="fas fa-plus-circle mr-2 text-primary"></i>Create New Course</h4>
-                        <p class="text-muted small ml-1">Assign a course name and link it to a registered teacher (Requirement R-3).</p>
+                        <p class="text-muted small ml-1">Assign a course name and link it to a registered teacher.</p>
                     </div>
                     <div class="card-body px-5 pb-5">
                         <form action="AdminController" method="post">
@@ -206,7 +206,6 @@
                                         <% } %>
                                     </select>
                                 </div>
-                                <small class="form-text text-muted">Only users with the 'Teacher' role are displayed.</small>
                             </div>
 
                             <button type="submit" class="btn btn-gradient btn-block mt-4">

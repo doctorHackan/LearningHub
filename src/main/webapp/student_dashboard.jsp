@@ -90,7 +90,7 @@
             List<Course> myCourses = enrollDAO.getStudentCourses(user.getId());
             
             CourseDAO courseDAO = new CourseDAO();
-            List<Course> allCourses = courseDAO.getAllCoursesWithDetails();
+            List<Course> allCourses = enrollDAO.getOtherCourses(user.getId());
         %>
 
         <div class="row align-items-center mb-4">
